@@ -72,10 +72,11 @@ class War {
         let randomSaxon = this.saxonArmy[randomSaxonIndex];
         let randomViking = this.vikingArmy[randomVikingIndex];
 
-        randomSaxon.receiveDamage(randomViking.strength);
+        let result = randomSaxon.receiveDamage(randomViking.attack());
         if (randomSaxon.health <= 0) {
             this.saxonArmy.splice(randomSaxonIndex);
         };
+        return result;
 
     }
     saxonAttack(){
@@ -85,10 +86,11 @@ class War {
         let randomSaxon = this.saxonArmy[randomSaxonIndex];
         let randomViking = this.vikingArmy[randomVikingIndex];
 
-        randomViking.receiveDamage(randomSaxon.strength);
+        let result = randomViking.receiveDamage(randomSaxon.attack());
         if (randomViking.health <= 0) {
             this.vikingArmy.splice(randomVikingIndex);
         };
+        return result;
     }
     showStatus(){
         if (this.saxonArmy.length == 0){
@@ -128,7 +130,7 @@ sanguinaria.addSaxon(sirTristan);
 sanguinaria.addSaxon(sirThomas);
 
 sanguinaria.vikingAttack();
-//sanguinaria.saxonAttack();
+sanguinaria.saxonAttack();
 //sanguinaria.vikingAttack();
 //sanguinaria.saxonAttack();
 //sanguinaria.saxonAttack();
